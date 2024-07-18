@@ -1,0 +1,48 @@
+
+        <html>
+        <head>
+        <style>
+            .popup {
+                display: none;
+                position: absolute;
+                background-color: white;
+                border: 1px solid black;
+                padding: 5px;
+                z-index: 10;
+            }
+        </style>
+        <script>
+            let currentPopup = null;
+            function togglePopup(id) {
+                var popup = document.getElementById('popup' + id);
+                if (currentPopup && currentPopup !== popup) {
+                    currentPopup.style.display = 'none';
+                }
+                if (popup.style.display === 'none' || popup.style.display === '') {
+                    popup.style.display = 'block';
+                    currentPopup = popup;
+                } else {
+                    popup.style.display = 'none';
+                    currentPopup = null;
+                }
+            }
+            document.addEventListener('click', function(event) {
+                if (currentPopup && !event.target.closest('.marker')) {
+                    currentPopup.style.display = 'none';
+                    currentPopup = null;
+                }
+            });
+        </script>
+        </head>
+        <body>
+        <img src="floorplanPLUSfurniture.png" alt="Floor Plan with Markers" style="position:relative; width:2760px; height:1718px;">
+        <div id="popup0" class="popup" style="position:absolute; display:none; left:676px; top:709px;"><div style='background-color:white; padding:5px;'><b>Tag:</b> C1<br><b>Type:</b> Chair<br><img src="graphics/chair1.png" alt="Picture" width="150" height="150"></div></div>
+        <div class="marker" onclick="togglePopup(0)" style="position:absolute; left:676px; top:709px; cursor:pointer; width:30px; height:30px;">
+            <img src="placeholder_marker.png" width="30" height="30">
+        </div>
+        
+        <div id="popup1" class="popup" style="position:absolute; display:none; left:811px; top:925px;"><div style='background-color:white; padding:5px;'><b>Tag:</b> T1<br><b>Type:</b> Table<br><img src="graphics/table1.png" alt="Picture" width="150" height="150"></div></div>
+        <div class="marker" onclick="togglePopup(1)" style="position:absolute; left:811px; top:925px; cursor:pointer; width:30px; height:30px;">
+            <img src="placeholder_marker.png" width="30" height="30">
+        </div>
+        </body></html>
